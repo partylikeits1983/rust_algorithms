@@ -4,8 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [[bin]]
-name = "is_fib"
-path = "src/is_fib/main.rs"
+name = "sparse_arrays"
+path = "src/sparse_arrays/main.rs"
 
 
 
