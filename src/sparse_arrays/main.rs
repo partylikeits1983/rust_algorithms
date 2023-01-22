@@ -1,9 +1,5 @@
-use std::env;
-use std::fs::File;
-use std::io::{self, BufRead, Write};
-
+use std::io::{self, BufRead};
 use std::collections::HashMap;
-
 
 /*
  * Complete the 'matchingStrings' function below.
@@ -17,85 +13,62 @@ use std::collections::HashMap;
 
 
 fn main() {
+    // IO
     let stdin = io::stdin();
     let mut stdin_iterator = stdin.lock().lines();
 
-    let mut fptr = File::create(env::var("OUTPUT_PATH").unwrap()).unwrap();
+    // string list count
+    let string_list_count = stdin_iterator.next().unwrap().unwrap().trim().parse::<i32>().unwrap();
 
-    let stringList_count = stdin_iterator.next().unwrap().unwrap().trim().parse::<i32>().unwrap();
+    // initialize vector of strings
+    let mut string_list: Vec<String> = Vec::with_capacity(string_list_count as usize);
 
-    let mut stringList: Vec<String> = Vec::with_capacity(stringList_count as usize);
-
-
-    let mut map = HashMap::new();
-
-
-    for _ in 0..stringList_count {
-        let stringList_item = stdin_iterator.next().unwrap().unwrap();
-
-
-        stringList.push(stringList_item);
-
-        
-        
-        if map[&stringList_item] >= 1 {
-            // println!("true");
-    
-            let value = map[&stringList_item] + 1;
-    
-            map.insert(stringList_item, value);
-        } else {
-            map.insert(stringList_item, 1);
-        }
-
-        
+    // read in strings
+    for _ in 0..string_list_count {
+        let string_list_item = stdin_iterator.next().unwrap().unwrap();
+        string_list.push(string_list_item);
     }
 
+    // init hashmap
+    let mut map = HashMap::new();
 
+    // write string frequency to hashmap
+    for string_list_item in string_list {
+        if map.contains_key(&string_list_item) {
+            let value = map[&string_list_item] + 1;
+    
+            map.insert(string_list_item, value);
+        } else {
+            map.insert(string_list_item, 1);
+        }
+    }
 
-
-
-
+    // queries count
     let queries_count = stdin_iterator.next().unwrap().unwrap().trim().parse::<i32>().unwrap();
-
     let mut queries: Vec<String> = Vec::with_capacity(queries_count as usize);
-
+    
+    // read in queries
     for _ in 0..queries_count {
         let queries_item = stdin_iterator.next().unwrap().unwrap();
         queries.push(queries_item);
     }
 
-    // let res = matchingStrings(&stringList, &queries, &map);
-
+    // init return vector
     let mut res: Vec<i32> = Vec::with_capacity(queries_count as usize);
-
-
-    for i in 0..queries_count {
-
-        let querie = queries.get(i as usize);
-
-        println!("{:?}", querie);
-
-/*         let number = map[&querie];
-
-        res.push(number); */
-
-
-    }
-
-
-
-    for i in 0..res.len() {
-        write!(&mut fptr, "{}", res[i]).ok();
-
-        if i != res.len() - 1 {
-            writeln!(&mut fptr).ok();
+    
+    // call hashmap and save values to res vector
+    for i in queries {
+        if map.contains_key(&i) {
+            let value = map[&i];
+            res.push(value);
+        } else {
+            res.push(0);
         }
     }
 
-    writeln!(&mut fptr).ok();
+    // print result
+    for i in res {
+        println!("{}", i); 
+    }
 }
-
-
-
 
