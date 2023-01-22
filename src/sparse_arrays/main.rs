@@ -11,6 +11,24 @@ use std::collections::HashMap;
  */
 
 
+fn sparse_arrays(map: HashMap<String, i32>, queries: Vec<String>) -> Vec<i32> {
+    let queries_count = queries.len();
+
+    // init return vector
+    let mut res: Vec<i32> = Vec::with_capacity(queries_count as usize);
+    
+    // call hashmap and save values to res vector
+    for i in queries {
+        if map.contains_key(&i) {
+            let value = &map[&i];
+            res.push(*value);
+        } else {
+            res.push(0);
+        }
+    }
+
+    return res;
+}
 
 fn main() {
     // IO
@@ -53,18 +71,7 @@ fn main() {
         queries.push(queries_item);
     }
 
-    // init return vector
-    let mut res: Vec<i32> = Vec::with_capacity(queries_count as usize);
-    
-    // call hashmap and save values to res vector
-    for i in queries {
-        if map.contains_key(&i) {
-            let value = map[&i];
-            res.push(value);
-        } else {
-            res.push(0);
-        }
-    }
+    let res: Vec<i32> = sparse_arrays(map, queries);
 
     // print result
     for i in res {
