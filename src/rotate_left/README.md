@@ -27,7 +27,7 @@ The second line contains space-separated integers that describe
 
 .
 
-Constraints
+Constraints  
 1<=n<=10e5  
 1<=d<=d  
 1<=a[i]<=1e6  

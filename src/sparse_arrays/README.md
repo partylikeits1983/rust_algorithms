@@ -3,8 +3,8 @@
 There is a collection of input strings and a collection of query strings. For each query string, determine how many times it occurs in the list of input strings. Return an array of the results.
 
 Example:
-stringList = ['ab','ab',abc]
-queries = ['ab',abc','bc']
+stringList = ['ab','ab',abc]  
+queries = ['ab',abc','bc']  
 
 
 
@@ -21,8 +21,8 @@ Complete the function matchingStrings in the editor below. The function must ret
 
 matchingStrings has the following parameters:
 
-    string stringList[n] - an array of strings to search
-    string queries[q] - an array of query strings
+    string stringList[n] - an array of strings to search  
+    string queries[q] - an array of query strings  
 
 Returns
     int[q]: an array of results for each query
