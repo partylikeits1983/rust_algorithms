@@ -1,6 +1,4 @@
-use std::env;
-use std::fs::File;
-use std::io::{self, BufRead, Write};
+use std::io::{self, BufRead};
 
 /*
 * Complete the 'rotateLeft' function below.
@@ -69,7 +67,7 @@ fn main() {
         .map(|s| s.to_string())
         .collect();
 
-    let n = first_multiple_input[0].trim().parse::<i32>().unwrap();
+    // let n = first_multiple_input[0].trim().parse::<i32>().unwrap();
     let d = first_multiple_input[1].trim().parse::<i32>().unwrap();
 
     let arr: Vec<i32> = stdin_iterator.next().unwrap().unwrap()
