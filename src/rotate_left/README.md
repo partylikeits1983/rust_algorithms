@@ -28,14 +28,14 @@ The second line contains space-separated integers that describe
 .
 
 Constraints
-1<=n<=10e5
-1<=d<=d
-1<=a[i]<=1e6
+1<=n<=10e5  
+1<=d<=d  
+1<=a[i]<=1e6  
 
 Sample Input
 
-5 4
-1 2 3 4 5
+5 4  
+1 2 3 4 5  
 
 Sample Output
 
