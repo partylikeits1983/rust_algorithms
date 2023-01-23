@@ -1,6 +1,4 @@
-use std::env;
-use std::fs::File;
-use std::io::{self, BufRead, Write};
+use std::io::{self, BufRead};
 
 /*
 * Complete the 'rotateLeft' function below.
@@ -59,30 +57,28 @@ fn rotate_left(d: i32, arr: &[i32]) -> Vec<i32> {
     return rotate_arr;
 }
 
-
 fn main() {
     let stdin = io::stdin();
     let mut stdin_iterator = stdin.lock().lines();
 
-    let first_multiple_input: Vec<String> = stdin_iterator.next().unwrap().unwrap()
-        .split(' ')
-        .map(|s| s.to_string())
-        .collect();
+    // size of array
+    let n = stdin_iterator.next().unwrap().unwrap().trim().parse::<i32>().unwrap();
 
-    let n = first_multiple_input[0].trim().parse::<i32>().unwrap();
-    let d = first_multiple_input[1].trim().parse::<i32>().unwrap();
+    // number of rotations
+    let d = stdin_iterator.next().unwrap().unwrap().trim().parse::<i32>().unwrap();
 
-    let arr: Vec<i32> = stdin_iterator.next().unwrap().unwrap()
-        .trim_end()
-        .split(' ')
-        .map(|s| s.to_string().parse::<i32>().unwrap())
-        .collect();
+    // initializing input array
+    let mut arr: Vec<i32> = Vec::with_capacity(n as usize);
 
+    for _ in 0..n {
+        let array_item = stdin_iterator.next().unwrap().unwrap().trim().parse::<i32>().unwrap();
+        arr.push(array_item);
+    }
 
     let result = rotate_left(d, &arr);
 
-    let result_string: String = result.into_iter().map(|i| i.to_string() + " ").collect::<String>();
-
-    println!("{}", result_string);
+    for i in result {
+        println!("{}", i);
+    }
 }
 
