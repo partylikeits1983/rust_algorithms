@@ -5,7 +5,7 @@ edition = "2021"
 
 [[bin]]
 name = "sparse_arrays"
-path = "src/sparse_arrays/main.rs"
+path = "src/rotate_left/main.rs"
 
 
 
